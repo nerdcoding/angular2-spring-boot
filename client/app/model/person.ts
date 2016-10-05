@@ -1,5 +1,5 @@
 /*
- * person-overview.ts
+ * person.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -16,26 +16,21 @@
  * limitations under the License.
  */
 
-import {Component, OnInit} from "@angular/core";
-import {PersonService} from "../../../services/person.service";
-import {Person} from "../../../model/person";
+export class Person {
 
-@Component({
-    selector: 'person-overview',
-    templateUrl: 'app/components/person/person-overview/person-overview.html'
-})
-export default class PersonOverviewComponent implements OnInit {
-
-    persons: Person[];
-
-    constructor(private personService: PersonService) { }
-
-    ngOnInit() {
-        this.personService
-            .getPersons()
-            .then(persons => this.persons = persons);
-    }
-
-    name: string = 'PersonOverview';
+    constructor(
+        public username: string,
+        public firstName: string,
+        public lastName: string,
+        public eMail: string,
+        public gender: string,
+        public street: string,
+        public houseNumber: string,
+        public city: string,
+        public state: string,
+        public country: string,
+        public creditCardNumber: string,
+        public creditCardType: string,
+        public imageBase64: string) {}
 
 }

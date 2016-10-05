@@ -26,10 +26,13 @@ import PersonOverviewComponent from "./components/person/person-overview/person-
 import SettingsComponent from "./components/settings/settings.component";
 import {Http404Component} from "./components/error/404/http-404.component";
 import {routing} from "./app.routing";
+import {HttpModule} from "@angular/http";
+import {PersonService} from "./services/person.service";
 
 @NgModule({
     imports: [
         BrowserModule,
+        HttpModule,
         routing
     ],
     declarations: [
@@ -42,7 +45,7 @@ import {routing} from "./app.routing";
         Http404Component
     ],
     providers: [
-
+        PersonService
     ],
     bootstrap: [
         ApplicationComponent

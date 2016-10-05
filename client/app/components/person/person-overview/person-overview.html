@@ -1,7 +1,7 @@
 <person-search></person-search>
 
 <div class="row">
-    <div class="col-md-12">
-        {{ name }}
+    <div *ngFor="let per of persons" class="col-sm-4 col-md-4 col-lg-4">
+        {{per.username}}, {{per.firstName}}, {{per.lastName}}
     </div>
 </div>

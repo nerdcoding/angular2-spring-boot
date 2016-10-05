@@ -1,5 +1,5 @@
 /*
- * person-overview.ts
+ * person.service.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -16,26 +16,27 @@
  * limitations under the License.
  */
 
-import {Component, OnInit} from "@angular/core";
-import {PersonService} from "../../../services/person.service";
-import {Person} from "../../../model/person";
+import {Http} from "@angular/http";
+import {Person} from "../model/person";
 
-@Component({
-    selector: 'person-overview',
-    templateUrl: 'app/components/person/person-overview/person-overview.html'
-})
-export default class PersonOverviewComponent implements OnInit {
+import 'rxjs/add/operator/toPromise';
+import {Injectable} from "@angular/core";
 
-    persons: Person[];
+@Injectable()
+export class PersonService {
 
-    constructor(private personService: PersonService) { }
+    constructor(private http: Http) {}
 
-    ngOnInit() {
-        this.personService
-            .getPersons()
-            .then(persons => this.persons = persons);
+    getPersons(): Promise<Person[]> {
+        return this.http.get('testData.json')
+            .toPromise()
+            .then(response => response.json() as Person[])
+            .catch(this.handleError);
     }
 
-    name: string = 'PersonOverview';
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+    }
 
 }
