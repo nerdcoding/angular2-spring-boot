@@ -1,5 +1,5 @@
 /*
- * person-overview.ts
+ * settings.component.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -19,11 +19,11 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'person-overview',
-    templateUrl: 'app/components/person-overview/person-overview.html'
+    selector: 'settings',
+    templateUrl: 'app/components/settings/settings.html'
 })
-export default class PersonOverviewComponent {
+export default class SettingsComponent {
 
-    name: string = 'PersonOverview';
+    name: string = 'Settings';
 
 }

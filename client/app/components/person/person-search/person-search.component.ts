@@ -20,7 +20,7 @@ import {Component} from "@angular/core";
 
 @Component({
     selector: 'person-search',
-    templateUrl: 'app/components/person-search/person-search.html'
+    templateUrl: 'app/components/person/person-search/person-search.html'
 
 })
 export default class PersonSearchComponent {

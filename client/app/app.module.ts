@@ -21,19 +21,25 @@ import {NgModule} from "@angular/core";
 import ApplicationComponent from "./components/application/application.component";
 import NavbarComponent from "./components/navbar/navbar.component";
 import FooterComponent from "./components/footer/footer.component";
-import PersonSearchComponent from "./components/person-search/person-search.component";
-import PersonOverviewComponent from "./components/person-overview/person-overview.component";
+import PersonSearchComponent from "./components/person/person-search/person-search.component";
+import PersonOverviewComponent from "./components/person/person-overview/person-overview.component";
+import SettingsComponent from "./components/settings/settings.component";
+import {Http404Component} from "./components/error/404/http-404.component";
+import {routing} from "./app.routing";
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
+        routing
     ],
     declarations: [
         ApplicationComponent,
         NavbarComponent,
         FooterComponent,
         PersonSearchComponent,
-        PersonOverviewComponent
+        PersonOverviewComponent,
+        SettingsComponent,
+        Http404Component
     ],
     providers: [
 
