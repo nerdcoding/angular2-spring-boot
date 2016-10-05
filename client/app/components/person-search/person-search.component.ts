@@ -1,5 +1,5 @@
 /*
- * application.component.ts
+ * person-search.component.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -19,11 +19,10 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'app',
-    templateUrl: 'app/components/application/application.html'
-})
-export default class ApplicationComponent {
+    selector: 'person-search',
+    templateUrl: 'app/components/person-search/person-search.html'
 
-    title: string = "Angular2 template";
+})
+export default class PersonSearchComponent {
 
 }

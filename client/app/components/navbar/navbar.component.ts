@@ -1,5 +1,5 @@
 /*
- * application.component.ts
+ * navbar.component.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -19,11 +19,7 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'app',
-    templateUrl: 'app/components/application/application.html'
+    selector: 'app-navbar',
+    templateUrl: 'app/components/navbar/navbar.html'
 })
-export default class ApplicationComponent {
-
-    title: string = "Angular2 template";
-
-}
+export default class NavbarComponent {}

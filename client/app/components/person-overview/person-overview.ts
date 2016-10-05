@@ -1,5 +1,5 @@
 /*
- * application.component.ts
+ * person-overview.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -19,11 +19,11 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'app',
-    templateUrl: 'app/components/application/application.html'
+    selector: 'person-overview',
+    templateUrl: 'app/components/person-overview/person-overview.html'
 })
-export default class ApplicationComponent {
+export default class PersonOverviewComponent {
 
-    title: string = "Angular2 template";
+    name: string = 'PersonOverview';
 
 }

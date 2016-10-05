@@ -19,13 +19,21 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import ApplicationComponent from "./components/application/application.component";
+import NavbarComponent from "./components/navbar/navbar.component";
+import FooterComponent from "./components/footer/footer.component";
+import PersonSearchComponent from "./components/person-search/person-search.component";
+import PersonOverviewComponent from "./components/person-overview/person-overview";
 
 @NgModule({
     imports: [
         BrowserModule
     ],
     declarations: [
-        ApplicationComponent
+        ApplicationComponent,
+        NavbarComponent,
+        FooterComponent,
+        PersonSearchComponent,
+        PersonOverviewComponent
     ],
     providers: [
 

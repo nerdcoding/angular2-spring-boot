@@ -1,5 +1,5 @@
 /*
- * application.component.ts
+ * footer.component.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -19,11 +19,11 @@
 import {Component} from "@angular/core";
 
 @Component({
-    selector: 'app',
-    templateUrl: 'app/components/application/application.html'
+    selector: 'app-footer',
+    templateUrl: 'app/components/footer/footer.html'
 })
-export default class ApplicationComponent {
+export default class FooterComponent {
 
-    title: string = "Angular2 template";
+    currentYear: number = new Date().getFullYear();
 
 }
