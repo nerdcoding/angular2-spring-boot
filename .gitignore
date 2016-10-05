@@ -1,0 +1,19 @@
+# gradle specific
+build/
+.gradle/
+out/
+
+# IDEA specific
+*.iml
+.idea/
+
+# NPM
+node_modules/
+typings/
+npm-debug.log
+
+#Typescript
+client/app/**/*.js
+client/app/**/*.map
+
+logs/
