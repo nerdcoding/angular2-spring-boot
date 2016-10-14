@@ -2,6 +2,7 @@
 build/
 .gradle/
 out/
+server/gradle/wrapper/gradle-wrapper.jar
 
 # IDEA specific
 *.iml
