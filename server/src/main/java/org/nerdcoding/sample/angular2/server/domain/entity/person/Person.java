@@ -19,6 +19,7 @@
 package org.nerdcoding.sample.angular2.server.domain.entity.person;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
@@ -36,6 +37,7 @@ public class Person {
     private String id;
 
     @NotNull
+    @Indexed(unique = true)
     private String username;
 
     @NotNull
@@ -45,7 +47,9 @@ public class Person {
     private String lastName;
 
     @NotNull
+    @Indexed(unique = true)
     private String eMail;
+
     @NotNull
     private Gender gender;
 
