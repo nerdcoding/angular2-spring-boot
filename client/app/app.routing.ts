@@ -27,6 +27,7 @@ import ApplicationComponent from "./components/application/application.component
 import PersonOverviewComponent from "./components/person/person-overview/person-overview.component";
 import SettingsComponent from "./components/settings/settings.component";
 import {Http404Component} from "./components/error/404/http-404.component";
+import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
 
 const routes: Routes = [
     {
@@ -37,6 +38,10 @@ const routes: Routes = [
     {
         path: 'overview',
         component: PersonOverviewComponent
+    },
+    {
+        path: 'details/:username',
+        component: PersonDetailComponent
     },
     {
         path: 'settings',

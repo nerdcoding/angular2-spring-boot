@@ -22,8 +22,4 @@ import {Component} from "@angular/core";
     selector: 'app',
     templateUrl: 'app/components/application/application.html'
 })
-export default class ApplicationComponent {
-
-    title: string = "Angular2 template";
-
-}
+export default class ApplicationComponent {}

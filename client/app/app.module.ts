@@ -28,6 +28,7 @@ import {Http404Component} from "./components/error/404/http-404.component";
 import {routing} from "./app.routing";
 import {HttpModule} from "@angular/http";
 import {PersonService} from "./services/person.service";
+import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
 
 @NgModule({
     imports: [
@@ -41,6 +42,7 @@ import {PersonService} from "./services/person.service";
         FooterComponent,
         PersonSearchComponent,
         PersonOverviewComponent,
+        PersonDetailComponent,
         SettingsComponent,
         Http404Component
     ],

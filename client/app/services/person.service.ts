@@ -34,6 +34,11 @@ export class PersonService {
             .catch(this.handleError);
     }
 
+    getPersonByUsername(username: string): Promise<Person> {
+        return this.getPersons()
+            .then(persons => persons.find(persons => persons.username === username));
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);

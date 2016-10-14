@@ -5,7 +5,7 @@
         <img class="pull-left" src="data:image/png;base64,{{ per.imageBase64 }}">
 
         <div class="caption">
-            <h4><a>{{per.firstName}} {{per.lastName}}</a></h4>
+            <h4><a [routerLink]="['/details', per.username]">{{per.firstName}} {{per.lastName}}</a></h4>
         </div>
     </div>
 </div>
