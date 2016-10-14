@@ -9,6 +9,7 @@ ext {
 
 	// common utility libraries
 	embeddedMongoVersion = '1.50.5'
+	jacksonVersion = '2.8.3'
 
 	// test libraries
 	junitVersion = '4.12'
@@ -51,6 +52,8 @@ dependencies {
 
 	// common utility libraries
 	compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:$embeddedMongoVersion")
+	compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+	compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 
 	// logging
 	compile("org.slf4j:slf4j-api:$slf4jVersion")

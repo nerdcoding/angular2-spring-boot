@@ -57,6 +57,8 @@ public class Person {
 
     private String houseNumber;
 
+    private String zipcode;
+
     private String city;
 
     private String state;
@@ -131,6 +133,14 @@ public class Person {
 
     public void setHouseNumber(final String houseNumber) {
         this.houseNumber = houseNumber;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(final String zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getCity() {
