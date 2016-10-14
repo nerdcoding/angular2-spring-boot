@@ -1,3 +1,15 @@
+ext {
+	// spring libraries
+	springVersion = '4.3.2.RELEASE'
+	springBootVersion = '1.4.1.RELEASE'
+
+	// common utility libraries
+	embeddedMongoVersion = '1.50.5'
+
+	// test libraries
+	junitVersion = '4.12'
+}
+
 buildscript {
 	ext {
 		springBootVersion = '1.4.1.RELEASE'
@@ -11,24 +23,33 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'server'
-	version = '0.0.1-SNAPSHOT'
+	version = '1.0.0-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// Spring Boot utility libraries
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
+	compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+	compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+	compile("org.springframework.boot:spring-boot-configuration-processor:$springBootVersion")
+
+	// common utility libraries
+	compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:$embeddedMongoVersion")
+
+	// test libraries
+	testCompile("junit:junit:$junitVersion")
+	testCompile("org.springframework:spring-test:$springVersion")
+	testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
