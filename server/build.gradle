@@ -1,4 +1,8 @@
 ext {
+	// logging
+	slf4jVersion = '1.7.21'
+	logbackVersion = '1.1.7'
+
 	// spring libraries
 	springVersion = '4.3.2.RELEASE'
 	springBootVersion = '1.4.1.RELEASE'
@@ -47,6 +51,10 @@ dependencies {
 
 	// common utility libraries
 	compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:$embeddedMongoVersion")
+
+	// logging
+	compile("org.slf4j:slf4j-api:$slf4jVersion")
+	compile("ch.qos.logback:logback-core:$logbackVersion")
 
 	// test libraries
 	testCompile("junit:junit:$junitVersion")
