@@ -41,7 +41,12 @@ export default class PersonDetailComponent implements OnInit {
             .then(person => this.person = person);
     }
 
-    goBack(): void {
+    goBack() {
         this.location.back();
     }
+
+    onSubmit() {
+        console.log(this.person.firstName)
+    }
+
 }

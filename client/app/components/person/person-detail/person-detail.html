@@ -1,10 +1,59 @@
-<div class="row">
-    <div class="col-md-12">
-        <button (click)="goBack()">Back</button>
+<form *ngIf="person" class="row" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+        <div class="col-sm-12 col-md-2 form-group">
+            <img class="pull-left" src="data:image/png;base64,{{ person.imageBase64 }}">
+        </div>
+
+        <div class="col-sm-12 col-md-5 form-group">
+            <label for="username">User name:</label>
+            <input id="username" type="text" class="form-control" name="username" [(ngModel)]="person.username">
+        </div>
+        <div class="col-sm-12 col-md-5 form-group">
+            <label for="eMail">Email:</label>
+            <input id="eMail" type="email" class="form-control" name="eMail" [(ngModel)]="person.eMail">
+        </div>
+
+        <div class="col-sm-12 col-md-5 form-group">
+            <label for="firstName">First name:</label>
+            <input id="firstName" type="text" class="form-control" name="firstName" [(ngModel)]="person.firstName">
+        </div>
+        <div class="col-sm-12 col-md-5 form-group">
+            <label for="lastName">Last name:</label>
+            <input id="lastName" type="text" class="form-control" name="lastName" [(ngModel)]="person.lastName">
+        </div>
     </div>
-</div>
-<div *ngIf="person" class="row">
-    <div class="col-md-12">
-        {{ person.firstName }}, {{ person.lastName }}
+    <div class="row">
+        <div class="col-sm-12 col-md-2 form-group">
+            <label for="gender">Gender:</label>
+            <input id="gender" type="text" class="form-control" name="gender" [(ngModel)]="person.gender">
+        </div>
+        <div class="col-sm-12 col-md-8 form-group">
+            <label for="street">Street:</label>
+            <input id="street" type="text" class="form-control" name="street" [(ngModel)]="person.street">
+        </div>
+        <div class="col-sm-12 col-md-2 form-group">
+            <label for="houseNumber">House number:</label>
+            <input id="houseNumber" type="text" class="form-control" name="houseNumber" [(ngModel)]="person.houseNumber">
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 form-group">
+            <label for="city">City:</label>
+            <input id="city" type="text" class="form-control" name="city" [(ngModel)]="person.city">
+        </div>
+        <div class="col-sm-12 col-md-4 form-group">
+            <label for="state">State:</label>
+            <input id="state" type="text" class="form-control" name="state" [(ngModel)]="person.state">
+        </div>
+        <div class="col-sm-12 col-md-4 form-group">
+            <label for="country">Country:</label>
+            <input id="country" type="text" class="form-control" name="country" [(ngModel)]="person.country">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-default" (click)="goBack()">Back</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

@@ -29,10 +29,12 @@ import {routing} from "./app.routing";
 import {HttpModule} from "@angular/http";
 import {PersonService} from "./services/person.service";
 import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
         routing
     ],
