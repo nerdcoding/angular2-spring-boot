@@ -17,8 +17,9 @@
  */
 
 
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Person} from "../../../model/person";
+import {Gender} from "../../../model/gender";
 import {ActivatedRoute} from "@angular/router";
 import {PersonService} from "../../../services/person.service";
 import { Location } from '@angular/common';
@@ -31,6 +32,8 @@ export default class PersonDetailComponent implements OnInit {
 
     person: Person;
 
+    genders: string[];
+
     constructor(private route: ActivatedRoute,
                 private location: Location,
                 private personService: PersonService) {}
@@ -39,6 +42,9 @@ export default class PersonDetailComponent implements OnInit {
         this.personService
             .getPersonByUsername(this.route.snapshot.params['username'])
             .then(person => this.person = person);
+
+        let allGenders = Object.keys(Gender);
+        this.genders = allGenders.slice(allGenders.length / 2);
     }
 
     goBack() {
@@ -46,7 +52,7 @@ export default class PersonDetailComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.person.firstName)
+        console.log(this.person.gender)
     }
 
 }

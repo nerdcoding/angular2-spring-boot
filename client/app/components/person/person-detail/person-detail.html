@@ -25,8 +25,14 @@
     <div class="row">
         <div class="col-sm-12 col-md-2 form-group">
             <label for="gender">Gender:</label>
-            <input id="gender" type="text" class="form-control" name="gender" [(ngModel)]="person.gender">
+            <select id="gender" class="form-control"
+                    name="gender" [(ngModel)]="person.gender">
+                <option *ngFor="let gender of genders" [ngValue]="gender">
+                    {{gender}}
+                </option>
+            </select>
         </div>
+
         <div class="col-sm-12 col-md-8 form-group">
             <label for="street">Street:</label>
             <input id="street" type="text" class="form-control" name="street" [(ngModel)]="person.street">
