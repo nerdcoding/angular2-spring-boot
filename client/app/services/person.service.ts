@@ -28,15 +28,17 @@ export class PersonService {
     constructor(private http: Http) {}
 
     getPersons(): Promise<Person[]> {
-        return this.http.get('testData.json')
+        return this.http.get('http://127.0.0.1:8080/persons')
             .toPromise()
             .then(response => response.json() as Person[])
             .catch(this.handleError);
     }
 
     getPersonByUsername(username: string): Promise<Person> {
-        return this.getPersons()
-            .then(persons => persons.find(persons => persons.username === username));
+        return this.http.get('http://127.0.0.1:8080/persons/' + username)
+            .toPromise()
+            .then(response => response.json() as Person)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
