@@ -20,7 +20,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Person} from "../../../model/person";
 import {Gender} from "../../../model/gender";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PersonService} from "../../../services/person.service";
 import { Location } from '@angular/common';
 
@@ -35,6 +35,7 @@ export default class PersonDetailComponent implements OnInit {
     genders: string[];
 
     constructor(private route: ActivatedRoute,
+                private router: Router,
                 private location: Location,
                 private personService: PersonService) {}
 
@@ -52,7 +53,8 @@ export default class PersonDetailComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.person.gender)
+        this.personService.updatePerson(this.person);
+        this.router.navigate(['/overview']);
     }
 
 }

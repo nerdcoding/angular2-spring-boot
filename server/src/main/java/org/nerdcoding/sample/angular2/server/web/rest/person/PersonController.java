@@ -27,8 +27,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -73,6 +75,17 @@ public class PersonController {
         }
 
         return personService.findAllPersons();
+    }
+
+    @RequestMapping(value = PersonController.MAPPING_PREFIX, method = RequestMethod.PUT)
+    public ResponseEntity<String> updatePerson(@RequestBody final Person person) {
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("****************** PUT request on " + MAPPING_PREFIX);
+        }
+
+        personService.updatePerson(person);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT); // 204
     }
 
     @ExceptionHandler(PersonNotFoundException.class)

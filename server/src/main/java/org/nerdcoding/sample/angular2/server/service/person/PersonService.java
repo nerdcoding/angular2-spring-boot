@@ -45,4 +45,8 @@ public class PersonService {
         // TODO introduce pagination
         return personRepository.findAll();
     }
+
+    public Person updatePerson(final Person person) {
+        return personRepository.save(person);
+    }
 }

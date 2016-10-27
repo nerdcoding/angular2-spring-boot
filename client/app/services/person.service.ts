@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
 import {Person} from "../model/person";
 
 import 'rxjs/add/operator/toPromise';
@@ -25,19 +25,29 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class PersonService {
 
+    private url = 'http://127.0.0.1:8080/persons';
+    private headers = new Headers({'Content-Type': 'application/json'});
+
     constructor(private http: Http) {}
 
     getPersons(): Promise<Person[]> {
-        return this.http.get('http://127.0.0.1:8080/persons')
+        return this.http.get(this.url)
             .toPromise()
             .then(response => response.json() as Person[])
             .catch(this.handleError);
     }
 
     getPersonByUsername(username: string): Promise<Person> {
-        return this.http.get('http://127.0.0.1:8080/persons/' + username)
+        return this.http.get(this.url + '/' + username)
             .toPromise()
             .then(response => response.json() as Person)
+            .catch(this.handleError);
+    }
+
+    updatePerson(person: Person) {
+        return this.http.put(this.url, JSON.stringify(person), {headers: this.headers})
+            .toPromise()
+            .then(() => person)
             .catch(this.handleError);
     }
 
