@@ -30,13 +30,15 @@ import {HttpModule} from "@angular/http";
 import {PersonService} from "./services/person.service";
 import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
 import {FormsModule} from "@angular/forms";
+import {Ng2PaginationModule} from "ng2-pagination";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+        Ng2PaginationModule
     ],
     declarations: [
         ApplicationComponent,

@@ -1,11 +1,16 @@
 <person-search></person-search>
 
 <div class="row">
-    <div *ngFor="let per of persons" class="col-sm-4 col-md-4 col-lg-4 thumbnail">
+    <div *ngFor="let per of persons | paginate: { itemsPerPage: 9, currentPage: p }" class="col-sm-4 col-md-4 col-lg-4 thumbnail">
         <img class="pull-left" src="data:image/png;base64,{{ per.imageBase64 }}">
 
         <div class="caption">
             <h4><a [routerLink]="['/details', per.username]">{{per.firstName}} {{per.lastName}}</a></h4>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
