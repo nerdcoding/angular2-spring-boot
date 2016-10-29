@@ -22,9 +22,12 @@ import {Person} from "../../../model/person";
 
 @Component({
     selector: 'person-overview',
-    templateUrl: 'app/components/person/person-overview/person-overview.html'
+    templateUrl: 'app/components/person/person-overview/person-overview.html',
 })
 export default class PersonOverviewComponent implements OnInit {
+
+    firstNameFilter: string;
+    lastNameFilter: string;
 
     persons: Person[];
 

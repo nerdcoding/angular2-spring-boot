@@ -1,7 +1,23 @@
-<person-search></person-search>
+<form name="searchForm" role="form">
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="firstNameFilter">First name:</label>
+            <input type="text" id="firstNameFilter" name="firstNameFilter"
+                   placeholder="First Name" class="form-control" [(ngModel)]="firstNameFilter">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="lastNameFilter">Last name:</label>
+            <input type="text" id="lastNameFilter" name="lastNameFilter"
+                   placeholder="Last Name" class="form-control" [(ngModel)]="lastNameFilter">
+        </div>
+    </div>
+</form>
 
 <div class="row">
-    <div *ngFor="let per of persons | paginate: { itemsPerPage: 9, currentPage: p }" class="col-sm-4 col-md-4 col-lg-4 thumbnail">
+    <div class="col-sm-4 col-md-4 col-lg-4 thumbnail" *ngFor="let per of persons
+                                                                    | filter:'firstName':firstNameFilter
+                                                                    | filter:'lastName':lastNameFilter
+                                                                    | paginate: { itemsPerPage: 9, currentPage: p }">
         <img class="pull-left" src="data:image/png;base64,{{ per.imageBase64 }}">
 
         <div class="caption">

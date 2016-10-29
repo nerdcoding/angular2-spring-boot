@@ -21,7 +21,6 @@ import {NgModule} from "@angular/core";
 import ApplicationComponent from "./components/application/application.component";
 import NavbarComponent from "./components/navbar/navbar.component";
 import FooterComponent from "./components/footer/footer.component";
-import PersonSearchComponent from "./components/person/person-search/person-search.component";
 import PersonOverviewComponent from "./components/person/person-overview/person-overview.component";
 import SettingsComponent from "./components/settings/settings.component";
 import {Http404Component} from "./components/error/404/http-404.component";
@@ -31,6 +30,7 @@ import {PersonService} from "./services/person.service";
 import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
 import {FormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
+import {FilterPipe} from "./pipes/filter.pipe";
 
 @NgModule({
     imports: [
@@ -44,11 +44,11 @@ import {Ng2PaginationModule} from "ng2-pagination";
         ApplicationComponent,
         NavbarComponent,
         FooterComponent,
-        PersonSearchComponent,
         PersonOverviewComponent,
         PersonDetailComponent,
         SettingsComponent,
-        Http404Component
+        Http404Component,
+        FilterPipe
     ],
     providers: [
         PersonService
