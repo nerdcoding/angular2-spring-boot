@@ -42,7 +42,7 @@ import java.util.List;
 @Component
 public class TestDataCreator {
 
-    private static final String PERSON_TEST_DATA_FILE = "server/src/main/resources/static/personTestData.json";
+    private static final String PERSON_TEST_DATA_FILE = "src/main/resources/static/personTestData.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
 
