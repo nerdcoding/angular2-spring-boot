@@ -1,5 +1,5 @@
 /*
- * PersonRepository.java
+ * JwtAuthenticationRequest.java
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -16,20 +16,32 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-package org.nerdcoding.sample.angular2.server.domain.repository.person;
-
-import org.nerdcoding.sample.angular2.server.domain.entity.person.Person;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+package org.nerdcoding.sample.angular2.server.web.authentication.jwt;
 
 /**
- * Spring Data repository for {@link Person} document.
+ * Holds the credentials provided by the client during the login process.
  *
  * @author Tobias Koltsch
  */
-@Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
+public class JwtAuthenticationRequest {
 
-    Person findByUsername(final String username);
+    private String username;
 
+    private String password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(final String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(final String password) {
+        this.password = password;
+    }
 }

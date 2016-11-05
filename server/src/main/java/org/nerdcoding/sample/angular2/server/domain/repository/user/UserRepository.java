@@ -16,20 +16,20 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-package org.nerdcoding.sample.angular2.server.domain.repository.person;
+package org.nerdcoding.sample.angular2.server.domain.repository.user;
 
-import org.nerdcoding.sample.angular2.server.domain.entity.person.Person;
+import org.nerdcoding.sample.angular2.server.domain.entity.user.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data repository for {@link Person} document.
+ * Spring Data repository for {@link User} document.
  *
  * @author Tobias Koltsch
  */
 @Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
+public interface UserRepository extends MongoRepository<User, String> {
 
-    Person findByUsername(final String username);
+    User findByUsername(final String username);
 
 }

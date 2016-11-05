@@ -8,8 +8,11 @@ ext {
 	springBootVersion = '1.4.1.RELEASE'
 
 	// common utility libraries
+	guavaVersion = '19.0'
+	jodaTimeVersion = '2.9.4'
 	embeddedMongoVersion = '1.50.5'
 	jacksonVersion = '2.8.3'
+	jsonwebtokenVersion = '0.7.0'
 
 	// test libraries
 	junitVersion = '4.12'
@@ -46,11 +49,14 @@ repositories {
 dependencies {
 	// Spring Boot utility libraries
 	compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
-	/*compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")*/
+	compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
 	compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
 	compile("org.springframework.boot:spring-boot-configuration-processor:$springBootVersion")
+	compile("io.jsonwebtoken:jjwt:$jsonwebtokenVersion")
 
 	// common utility libraries
+	compile("joda-time:joda-time:$jodaTimeVersion")
+	compile("com.google.guava:guava:$guavaVersion")
 	compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:$embeddedMongoVersion")
 	compile("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
 	compile("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")

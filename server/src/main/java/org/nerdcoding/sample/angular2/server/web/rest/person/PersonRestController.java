@@ -3,17 +3,17 @@
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
 package org.nerdcoding.sample.angular2.server.web.rest.person;
@@ -45,9 +45,9 @@ import java.util.List;
  * @version 1.0.0
  */
 @RestController
-public class PersonController {
+public class PersonRestController {
 
-    private Logger LOG = LoggerFactory.getLogger(PersonController.class);
+    private Logger LOG = LoggerFactory.getLogger(PersonRestController.class);
 
     private static final String MAPPING_PREFIX = "/persons";
 
@@ -57,7 +57,7 @@ public class PersonController {
     @RequestMapping(value = MAPPING_PREFIX + "/{username}", method = RequestMethod.GET)
     public Person getPersonByUsername(@PathVariable final String username) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("****************** GET request on " + MAPPING_PREFIX +" with username " + username);
+            LOG.debug("GET request on " + MAPPING_PREFIX +" with username " + username);
         }
 
         final Person result = personService.findByUsername(username);
@@ -68,19 +68,19 @@ public class PersonController {
         return result;
     }
 
-    @RequestMapping(value = PersonController.MAPPING_PREFIX, method = RequestMethod.GET)
+    @RequestMapping(value = PersonRestController.MAPPING_PREFIX, method = RequestMethod.GET)
     public List<Person> getAllPersons() {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("****************** GET request on " + MAPPING_PREFIX);
+            LOG.debug("GET request on " + MAPPING_PREFIX);
         }
 
         return personService.findAllPersons();
     }
 
-    @RequestMapping(value = PersonController.MAPPING_PREFIX, method = RequestMethod.PUT)
+    @RequestMapping(value = PersonRestController.MAPPING_PREFIX, method = RequestMethod.PUT)
     public ResponseEntity<String> updatePerson(@RequestBody final Person person) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("****************** PUT request on " + MAPPING_PREFIX);
+            LOG.debug("PUT request on " + MAPPING_PREFIX);
         }
 
         personService.updatePerson(person);

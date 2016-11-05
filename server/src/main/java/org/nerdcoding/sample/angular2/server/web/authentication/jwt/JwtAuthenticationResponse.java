@@ -1,5 +1,5 @@
 /*
- * PersonRepository.java
+ * JwtAuthenticationResponse.java
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -16,20 +16,24 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-package org.nerdcoding.sample.angular2.server.domain.repository.person;
-
-import org.nerdcoding.sample.angular2.server.domain.entity.person.Person;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+package org.nerdcoding.sample.angular2.server.web.authentication.jwt;
 
 /**
- * Spring Data repository for {@link Person} document.
+ * After an successful authentication the generated JSON Web Token is send back to the client as an instance of this
+ * class.
  *
  * @author Tobias Koltsch
  */
-@Repository
-public interface PersonRepository extends MongoRepository<Person, String> {
+public class JwtAuthenticationResponse {
 
-    Person findByUsername(final String username);
+    private final String jwtToken;
+
+    public JwtAuthenticationResponse(final String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
+
+    public String getJwtToken() {
+        return jwtToken;
+    }
 
 }

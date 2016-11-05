@@ -3,20 +3,20 @@
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Lesser General Public License for more details.
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-package org.nerdcoding.sample.angular2.server.web.security;
+package org.nerdcoding.sample.angular2.server.web.authentication;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
@@ -44,18 +44,19 @@ import java.io.IOException;
 public class CrossOriginResourceSharingFilter extends GenericFilterBean {
 
     private static final String CLIENT_URL = "http://127.0.0.1:3000";
+    private static final String ORIGIN_HEADER = "ORIGIN";
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
-        if (request.getHeader("ORIGIN") != null
-                && originEqualsClientUrl(request.getHeader("ORIGIN"), CLIENT_URL)) {
-            setAccessControlHeader((HttpServletResponse) servletResponse, request.getHeader("ORIGIN"));
+
+        if (request.getHeader(ORIGIN_HEADER) != null
+//                    && request.getHeader(ORIGIN_HEADER).equals(CLIENT_URL)) {
+                && originEqualsClientUrl(request.getHeader(ORIGIN_HEADER), CLIENT_URL)) {
+            setAccessControlHeader((HttpServletResponse) servletResponse, request.getHeader(ORIGIN_HEADER));
         }
 
-        if (!request.getMethod().equals("OPTIONS")) {
-            filterChain.doFilter(servletRequest, servletResponse);
-        }
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 
     private void setAccessControlHeader(final HttpServletResponse response, final String origin) {
@@ -65,6 +66,8 @@ public class CrossOriginResourceSharingFilter extends GenericFilterBean {
         response.setHeader("Access-Control-Max-Age", "3600");
     }
 
+    //&& originEqualsClientUrl(request.getHeader(ORIGIN_HEADER), CLIENT_URL)) {
+    //
     boolean originEqualsClientUrl(final String origin, final String clientUrl) {
         String adjustedOrigin = switchLocalhost(origin);
         if (adjustedOrigin.endsWith("/")) {
