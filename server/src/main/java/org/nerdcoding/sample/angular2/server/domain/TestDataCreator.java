@@ -21,6 +21,7 @@ package org.nerdcoding.sample.angular2.server.domain;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.nerdcoding.sample.angular2.server.domain.entity.person.Person;
+import org.nerdcoding.sample.angular2.server.domain.entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
@@ -32,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * During startup of the Spring Boot application, we read the "testData.json" form the file system and import all
+ * During startup of the Spring Boot application, we read the "personTestData.json" form the file system and import all
  * entries into the embedded MongoDB.
  *
  * @author Tobias Koltsch
@@ -41,7 +42,7 @@ import java.util.List;
 @Component
 public class TestDataCreator {
 
-    private static final String TEST_DATA_FILE = "server/src/main/resources/static/testData.json";
+    private static final String PERSON_TEST_DATA_FILE = "server/src/main/resources/static/personTestData.json";
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -50,11 +51,21 @@ public class TestDataCreator {
 
     @PostConstruct
     public void setUp() throws IOException {
-        mongoTemplate.insert(readTestDataJsonFile(), Person.class);
+        // Insert Person test data.
+        mongoTemplate.insert(readPersonTestDataJsonFile(), Person.class);
+        // Insert User test data.
+        mongoTemplate.insert(createTestUser());
     }
 
-    private List<Person> readTestDataJsonFile() throws IOException {
+    private List<Person> readPersonTestDataJsonFile() throws IOException {
         return mapper.readValue(
-                new FileInputStream(new File(TEST_DATA_FILE)), new TypeReference<List<Person>>() {});
+                new FileInputStream(new File(PERSON_TEST_DATA_FILE)), new TypeReference<List<Person>>() {});
+    }
+
+    private User createTestUser() throws IOException {
+        final User testUser = new User();
+        testUser.setUsername("admin");
+        testUser.setPassword("admin");
+        return testUser;
     }
 }
