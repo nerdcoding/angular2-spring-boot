@@ -32,13 +32,13 @@ The server application is accessible with at `http://127.0.0.1:8080`.
 ## Client
 
 The client is a Angular2 application which uses the Spring Boot application
-as backend. The must be built and started independent from the server. 
+as backend. It must be built and started independent from the server. 
 
 ### Build & Startup
 
 Node.js and npm needs to be installed to build and start the client
-application.. Verify that you are running at least node v4.x.x and 
-npm 3.x.x by running `node -v` and `npm -v` in a terminal. 
+application. Verify that you have at least node v4.x.x and  npm 3.x.x 
+installed by running `node -v` and `npm -v` in a terminal. 
 
 To install all required dependencies simply run:
 
@@ -46,7 +46,7 @@ To install all required dependencies simply run:
 npm install
 ```
 
-Afterwards the Typescript have to be transpiled to Javascript and a 
+Afterwards the Typescript classes have to be transpiled to Javascript and a 
 http server needs to be started which delivers the client application. 
 This is done with:
 
@@ -60,5 +60,5 @@ could be used.
 
 ## Licensing
 The software of this repository is licensed under the GNU Lesser General 
-Public License. See [LICENSE](https://github.com/nerdcoding/angular2-spring-boot/blob/master/LICENSE) 
+Public License v3. See [LICENSE](https://github.com/nerdcoding/angular2-spring-boot/blob/master/LICENSE) 
 for the full license text.
