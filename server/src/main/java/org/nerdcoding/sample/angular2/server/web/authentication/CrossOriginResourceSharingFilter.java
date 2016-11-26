@@ -18,6 +18,8 @@
 
 package org.nerdcoding.sample.angular2.server.web.authentication;
 
+import org.nerdcoding.sample.angular2.server.web.authentication.jwt.TokenAuthenticationService;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -51,23 +53,23 @@ public class CrossOriginResourceSharingFilter extends GenericFilterBean {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
 
         if (request.getHeader(ORIGIN_HEADER) != null
-//                    && request.getHeader(ORIGIN_HEADER).equals(CLIENT_URL)) {
                 && originEqualsClientUrl(request.getHeader(ORIGIN_HEADER), CLIENT_URL)) {
             setAccessControlHeader((HttpServletResponse) servletResponse, request.getHeader(ORIGIN_HEADER));
         }
 
-        filterChain.doFilter(servletRequest, servletResponse);
+        if (!HttpMethod.OPTIONS.matches(request.getMethod())) {
+            filterChain.doFilter(servletRequest, servletResponse);
+        }
     }
 
     private void setAccessControlHeader(final HttpServletResponse response, final String origin) {
         response.setHeader("Access-Control-Allow-Origin", origin);
         response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Origin, Accept, Access-Control-Allow-Headers, Access-Control-Request-Headers");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, Origin, Accept, " +
+                "Access-Control-Allow-Headers, Access-Control-Request-Headers, " + TokenAuthenticationService.AUTH_HEADER_NAME);
         response.setHeader("Access-Control-Max-Age", "3600");
     }
 
-    //&& originEqualsClientUrl(request.getHeader(ORIGIN_HEADER), CLIENT_URL)) {
-    //
     boolean originEqualsClientUrl(final String origin, final String clientUrl) {
         String adjustedOrigin = switchLocalhost(origin);
         if (adjustedOrigin.endsWith("/")) {

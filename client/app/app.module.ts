@@ -28,14 +28,18 @@ import {routing} from "./app.routing";
 import {HttpModule} from "@angular/http";
 import {PersonService} from "./services/person.service";
 import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Ng2PaginationModule} from "ng2-pagination";
 import {FilterPipe} from "./pipes/filter.pipe";
+import {provideAuth} from "angular2-jwt";
+import {LoginComponent} from "./components/login/login.component";
+import {AuthGuard} from "./services/auth/auth-guard.service";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         routing,
         Ng2PaginationModule
@@ -44,6 +48,7 @@ import {FilterPipe} from "./pipes/filter.pipe";
         ApplicationComponent,
         NavbarComponent,
         FooterComponent,
+        LoginComponent,
         PersonOverviewComponent,
         PersonDetailComponent,
         SettingsComponent,
@@ -51,7 +56,17 @@ import {FilterPipe} from "./pipes/filter.pipe";
         FilterPipe
     ],
     providers: [
-        PersonService
+        PersonService,
+        AuthGuard,
+        provideAuth({
+            headerName: 'X-AUTH-TOKEN',
+            headerPrefix: ' ',
+            tokenName: 'id_token',
+            tokenGetter: (() => localStorage.getItem('id_token')),
+            globalHeaders: [{'Content-Type': 'application/json'}],
+            noJwtError: false,
+            noTokenScheme: false
+        })
     ],
     bootstrap: [
         ApplicationComponent

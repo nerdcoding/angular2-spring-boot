@@ -16,11 +16,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import {Http, Headers} from "@angular/http";
+import {Headers} from "@angular/http";
 import {Person} from "../model/person";
 
 import 'rxjs/add/operator/toPromise';
 import {Injectable} from "@angular/core";
+import {AuthHttp} from "angular2-jwt";
 
 @Injectable()
 export class PersonService {
@@ -28,24 +29,24 @@ export class PersonService {
     private url = 'http://127.0.0.1:8080/persons';
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http) {}
+    constructor(public authHttp: AuthHttp) {}
 
     getPersons(): Promise<Person[]> {
-        return this.http.get(this.url)
+        return this.authHttp.get(this.url)
             .toPromise()
             .then(response => response.json() as Person[])
             .catch(this.handleError);
     }
 
     getPersonByUsername(username: string): Promise<Person> {
-        return this.http.get(this.url + '/' + username)
+        return this.authHttp.get(this.url + '/' + username)
             .toPromise()
             .then(response => response.json() as Person)
             .catch(this.handleError);
     }
 
     updatePerson(person: Person) {
-        return this.http.put(this.url, JSON.stringify(person), {headers: this.headers})
+        return this.authHttp.put(this.url, JSON.stringify(person), {headers: this.headers})
             .toPromise()
             .then(() => person)
             .catch(this.handleError);

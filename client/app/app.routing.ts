@@ -17,11 +17,12 @@
  */
 
 import {Routes, RouterModule} from "@angular/router";
-import ApplicationComponent from "./components/application/application.component";
 import PersonOverviewComponent from "./components/person/person-overview/person-overview.component";
 import SettingsComponent from "./components/settings/settings.component";
 import {Http404Component} from "./components/error/404/http-404.component";
 import PersonDetailComponent from "./components/person/person-detail/person-detail.component";
+import {LoginComponent} from "./components/login/login.component";
+import {AuthGuard} from "./services/auth/auth-guard.service";
 
 const routes: Routes = [
     {
@@ -30,16 +31,23 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     {
+        path: 'login',
+        component: LoginComponent,
+    },
+    {
         path: 'overview',
-        component: PersonOverviewComponent
+        component: PersonOverviewComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'details/:username',
-        component: PersonDetailComponent
+        component: PersonDetailComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'settings',
-        component: SettingsComponent
+        component: SettingsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '**',

@@ -1,5 +1,5 @@
 /*
- * navbar.component.ts
+ * AuthGuard.ts
  *
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
@@ -16,16 +16,21 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import {Component} from "@angular/core";
+import {Injectable} from "@angular/core";
+import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {tokenNotExpired} from "angular2-jwt";
 
-@Component({
-    selector: 'app-navbar',
-    templateUrl: 'app/components/navbar/navbar.html'
-})
-export default class NavbarComponent {
+@Injectable()
+export class AuthGuard implements CanActivate {
 
-    public logout() {
-        localStorage.removeItem('id_token');
+    constructor(private router: Router) {}
+
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        if (tokenNotExpired()) {
+            return true;
+        }
+
+        this.router.navigate(['login']);
+        return false;
     }
-
 }

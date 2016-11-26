@@ -16,6 +16,9 @@
                 <li><a [routerLink]="['/overview']">Overview</a></li>
                 <li><a [routerLink]="['/settings']">Settings</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a (click)="logout()" [routerLink]="['/login']">Logout</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
