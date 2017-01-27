@@ -62,3 +62,4 @@ could be used.
 The software of this repository is licensed under the GNU Lesser General 
 Public License v3. See [LICENSE](https://github.com/nerdcoding/angular2-spring-boot/blob/master/LICENSE) 
 for the full license text.
+
